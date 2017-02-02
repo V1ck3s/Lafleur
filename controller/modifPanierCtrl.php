@@ -1,0 +1,15 @@
+<?php
+	if(isset($_GET["action"])){
+		if($_GET["action"]=="ajout"){
+			if(!isset($_SESSION["panier"])){
+				$_SESSION["panier"]=array();
+			}
+			if(isset($_SESSION["panier"][$_GET["pdt_ref"]])){
+				$_SESSION["panier"][$_GET["pdt_ref"]]++;
+			}
+			else{
+				$_SESSION["panier"][$_GET["pdt_ref"]]=1;
+			}
+		}
+	}
+	$CONTROLLER["redirect"]="?do=Panier";
